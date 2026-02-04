@@ -32,6 +32,7 @@ export async function POST(request: NextRequest) {
       'hiphop': `${prompt}, hip hop style, urban, street art influence, bold typography, graffiti elements`,
       'blues': `${prompt}, blues music mood, emotional, soulful, vintage, deep colors, melancholic`,
       'turkish': `${prompt}, Turkish music inspired, cultural elements, bağlama saz, traditional motifs, Anatolian`,
+      'custom': prompt, // Özel mod - prompt olduğu gibi kullanılır
     }
 
     enhancedPrompt = stylePrompts[style] || `${prompt}, music artwork, professional quality, artistic`

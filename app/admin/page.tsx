@@ -630,19 +630,29 @@ export default function AdminPage() {
                               <option value="folk">Folk</option>
                               <option value="blues">Blues</option>
                               <option value="hiphop">Hip Hop</option>
+                              <option value="custom">🎨 Özel (Tamamen Serbest)</option>
                             </select>
                           </div>
 
                           {/* Prompt Input */}
                           <div className="mb-4">
-                            <label className="block text-sm text-spotify-light-gray mb-2">Görsel Açıklaması</label>
+                            <label className="block text-sm text-spotify-light-gray mb-2">
+                              {aiStyle === 'custom' ? 'Tam Prompt (Serbest)' : 'Görsel Açıklaması'}
+                            </label>
                             <textarea
                               value={aiPrompt}
                               onChange={(e) => setAiPrompt(e.target.value)}
-                              placeholder="Örn: Gün batımında bir sahil, romantik hissiyat, pastel renkler..."
+                              placeholder={aiStyle === 'custom' 
+                                ? "Örn: A professional album cover with a sunset over mountains, warm colors, photorealistic, 4k, detailed, cinematic lighting..."
+                                : "Örn: Gün batımında bir sahil, romantik hissiyat, pastel renkler..."}
                               className="w-full bg-spotify-dark rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm resize-none"
-                              rows={3}
+                              rows={aiStyle === 'custom' ? 4 : 3}
                             />
+                            {aiStyle === 'custom' && (
+                              <p className="text-xs text-yellow-400 mt-2">
+                                ⚡ Özel modda promptunuz olduğu gibi kullanılır, stil eklenmez.
+                              </p>
+                            )}
                           </div>
 
                           {/* Generate Button */}
@@ -788,19 +798,29 @@ export default function AdminPage() {
                               <option value="folk">Folk</option>
                               <option value="blues">Blues</option>
                               <option value="hiphop">Hip Hop</option>
+                              <option value="custom">🎨 Özel (Tamamen Serbest)</option>
                             </select>
                           </div>
 
                           {/* Prompt Input */}
                           <div className="mb-4">
-                            <label className="block text-sm text-spotify-light-gray mb-2">Görsel Açıklaması</label>
+                            <label className="block text-sm text-spotify-light-gray mb-2">
+                              {aiStyle === 'custom' ? 'Tam Prompt (Serbest)' : 'Görsel Açıklaması'}
+                            </label>
                             <textarea
                               value={aiPrompt}
                               onChange={(e) => setAiPrompt(e.target.value)}
-                              placeholder="Örn: Gün batımında bir sahil, romantik hissiyat, pastel renkler..."
+                              placeholder={aiStyle === 'custom' 
+                                ? "Örn: A professional album cover with a sunset over mountains, warm colors, photorealistic, 4k, detailed, cinematic lighting..."
+                                : "Örn: Gün batımında bir sahil, romantik hissiyat, pastel renkler..."}
                               className="w-full bg-spotify-dark rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm resize-none"
-                              rows={3}
+                              rows={aiStyle === 'custom' ? 4 : 3}
                             />
+                            {aiStyle === 'custom' && (
+                              <p className="text-xs text-yellow-400 mt-2">
+                                ⚡ Özel modda promptunuz olduğu gibi kullanılır, stil eklenmez.
+                              </p>
+                            )}
                           </div>
 
                           {/* Generate Button */}
