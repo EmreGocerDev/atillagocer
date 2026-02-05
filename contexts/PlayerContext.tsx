@@ -46,10 +46,31 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
     setIsPlaying(true)
     
     // Play count güncelle
+    incrementPlayCount(song.id)
+  }
+
+  const incrementPlayCount = async (songId: string) => {
     try {
-      supabase.rpc('increment_play_count', { song_id: song.id })
+      // Önce RPC fonksiyonunu dene
+      const { error: rpcError } = await supabase.rpc('increment_play_count', { song_id: songId })
+      
+      if (rpcError) {
+        // RPC yoksa manuel güncelle
+        const { data: currentSong } = await supabase
+          .from('songs')
+          .select('play_count')
+          .eq('id', songId)
+          .single()
+        
+        if (currentSong) {
+          await supabase
+            .from('songs')
+            .update({ play_count: (currentSong.play_count || 0) + 1 })
+            .eq('id', songId)
+        }
+      }
     } catch (e) {
-      // Ignore errors
+      console.error('Play count güncellenemedi:', e)
     }
   }
 

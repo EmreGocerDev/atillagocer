@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
       'custom': prompt, // Özel mod - prompt olduğu gibi kullanılır
     }
 
-    enhancedPrompt = stylePrompts[style] || `${prompt}, music artwork, professional quality, artistic`
+    enhancedPrompt = stylePrompts[style] || `${prompt}, professional quality, realistic, detailed`
 
     // Hugging Face Inference API - Stable Diffusion kullanarak
     const response = await fetch(
