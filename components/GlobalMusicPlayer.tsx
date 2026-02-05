@@ -133,7 +133,7 @@ export default function GlobalMusicPlayer() {
             await new Promise((resolve, reject) => {
               img.onload = resolve
               img.onerror = reject
-              img.src = song.cover_image_url
+              img.src = song.cover_image_url as string
             })
             
             // Draw cover image centered with shadow
