@@ -77,11 +77,19 @@ export default function SongCard({ song, onPlay, isPlaying }: SongCardProps) {
       <p className="text-xs lg:text-sm text-spotify-light-gray truncate">
         {song.artist}
       </p>
-      {song.genre && (
-        <span className="inline-block mt-2 text-xs bg-spotify-gray px-2 py-0.5 lg:py-1 rounded-full text-spotify-light-gray">
-          {song.genre}
+      
+      <div className="flex items-center justify-between mt-2">
+        {song.genre ? (
+          <span className="text-[10px] lg:text-xs bg-spotify-gray px-2 py-0.5 rounded-full text-spotify-light-gray">
+            {song.genre}
+          </span>
+        ) : (
+          <div />
+        )}
+        <span className="text-[10px] lg:text-xs text-spotify-light-gray">
+          {song.play_count?.toLocaleString()} dinlenme
         </span>
-      )}
+      </div>
     </div>
   )
 }

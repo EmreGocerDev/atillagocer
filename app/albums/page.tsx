@@ -147,7 +147,7 @@ export default function AlbumsPage() {
                         </p>
                         <p className="text-xs lg:text-sm text-spotify-light-gray truncate">{song.artist}</p>
                       </div>
-                      <span className="text-spotify-light-gray text-xs lg:text-sm hidden sm:block">
+                      <span className="text-spotify-light-gray text-xs lg:text-sm">
                         {song.play_count.toLocaleString()} dinlenme
                       </span>
                     </div>
